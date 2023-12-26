@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh Jo-Ken-po Edition</title>
+
+    <!-- Styles -->
+    <!-- framework -->
+    <link rel="stylesheet" href="src/styles/buttons.css">
+    <link rel="stylesheet" href="src/styles/containers_and_frames.css">
+    <!-- main -->
+    <link rel="stylesheet" href="src/styles/main.css">
+    <!-- reset -->
+    <link rel="stylesheet" href="src/styles/reset.css">
+</head>
+
+<body>
+    <div class="bg-video">
+        <video class="video" autoplay loop muted>
+            <source src="./src/assets/video/yugi.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <div class="conteiner">
+        <div class="conteiner__left framed-golden-2">
+            <div class="score_box frame">
+                <span id="score_points">Win : 0 | Lose : 0</span>
+            </div>
+
+            <div class="menu_avatar">
+                <img src="src/assets/icons/card-back.png" alt="" id="card-image" width="150px">
+            </div>
+
+            <div class="card_details frame">
+                <p id="card-name">Dark Mage</p>
+                <p id="card-type">Attribute: Rock</p>
+            </div>
+
+        </div>
+        <div class="conteiner__right">
+            <div class="card-box__conteiner framed cards-conteiner">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+
+            <div class="card-versus">
+                <img src="src/assets/icons/card-front.png" width="150px">
+                <img src="src/assets/icons/eye.jpg" width="150px">
+                <img src="src/assets/icons/card-front.png" width="150px">
+            </div>
+
+            <div class="card-box-user framed cards-conteiner">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+        </div>
+    </div>
+    <script src="src/scripts/engine.js" defer></script>
+</body>
+
+</html>
