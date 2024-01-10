@@ -131,9 +131,13 @@
 .card{
     width: 85px;
     height: 135px;
-    border: 1px solid red;
     background-image: url('../assets/icons/card-back.png');
     background-size: contain;
     margin: 10px;
+
+    transition: transform 0.2s;
 }
 
+.card:hover{
+    transform: scale(1.2);
+}

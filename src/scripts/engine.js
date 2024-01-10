@@ -20,13 +20,11 @@ const state = {
 };
 
 const playersSides = {
-    player1: 'player-field-card',
-    computer: 'computer-field-card',
+    player1: 'player-cards',
+    computer: 'computer-cards',
 }
 
-const pathImages = '../src/assets/icon/';
-
-
+const pathImages = '../src/assets/icons/';
 // Dá pra usar banco de dados
 const cardData = [
     {
@@ -60,6 +58,33 @@ async function getRandomCardId() {
     return cardData[randomIndex].id;
 }
 
+async function drawSelectCard(index) {
+    let carta = cardData[index]
+    // Colocar a carta no avatar
+    state.cardSprites.avatar.setAttribute('src', carta.img);
+    state.cardSprites.name.innerText = carta.name;
+    state.cardSprites.type.innerText = 'Attribute: ' + carta.type;
+}
+
+async function setCardsField(cardId) {
+    await removeAllCardsImages();
+
+
+    let computerCardId = await getRandomCardId();
+
+    state.fieldCards.player.style.display = 'block';
+    state.fieldCards.computer.style.display = 'block';
+
+    state.fieldCards.player.src = cardData[cardId].img;
+    state.fieldCards.computer.src = cardData[computerCardId].img;
+
+
+    let duelResults = await checkDuelResults(cardId, computerCardId);
+
+    await updateScore();
+    await drawButton(duelResults);
+}
+
 async function createCardImage(idCard, fieldSide) {
     const cardImage = document.createElement('img');
     cardImage.setAttribute('heigth', '100px');
@@ -72,11 +97,12 @@ async function createCardImage(idCard, fieldSide) {
         cardImage.addEventListener('click', ()=>{
             setCardsField(cardImage.getAttribute('data-id'))
         })
+
+        cardImage.addEventListener('mouseover', (e)=>{
+            drawSelectCard(idCard, e);
+        });
     }
 
-    cardImage.addEventListener('mouseover', ()=>{
-        drawSelectCard(idCard);
-    });
 
     return cardImage;
 }
@@ -86,7 +112,6 @@ async function drawCards(cardNumber, fieldSide){
         const randomIdCard = await getRandomCardId();
         const cardImage = await createCardImage(randomIdCard, fieldSide);
 
-        console.log(fieldSide);
         document.getElementById(fieldSide).appendChild(cardImage);
     }
 }
