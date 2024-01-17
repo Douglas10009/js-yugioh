@@ -1,3 +1,11 @@
+body{
+    cursor: url('../assets/cursor/yugicursor.png'), default;
+}
+
+button, button:hover, a, a:hover, img:hover{
+    cursor: url('../assets/cursor/yamiyugicursorGLOW.png'), auto;
+}
+
 .bg-video{
     position: absolute;
     z-index: -2;
@@ -124,8 +132,22 @@
     width: 500px;
 }
 
+.versus-botton{
+    display: block;
+    width: 20%;
+    height: 100px;
+}
+
 #next-duel{
+    /* visibility: hidden; */
+    /* display: block; */
     display: none;
+
+    /* width: inherit;
+    height: inherit; */
+
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .card{
